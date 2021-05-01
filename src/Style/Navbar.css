@@ -1,0 +1,38 @@
+.navbar{
+    padding: 0 !important;
+}
+.navbar-brand{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.menu{
+    justify-content: flex-end;
+    margin-right: 150px;
+}
+.marginMenu :hover{
+    text-decoration: none;
+}
+.itemMenu{
+    text-align: end;
+    padding: 5px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: white;
+}
+.nav-link{
+    color: white !important;
+    padding: 0 !important;
+}
+.inicioLogo{
+    width: 75px;
+    margin-left: 90px;
+}
+.carrito{
+    font-size: 25px;
+}
+.marginMenu{
+    margin-bottom: 100px;
+    border-bottom: 1px solid gray;
+    box-shadow: 0.3px 0.3px 6px rgba(0, 0, 0, 0.5);
+} 

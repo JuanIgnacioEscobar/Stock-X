@@ -1,3 +1,7 @@
+## Primera entrega del proyecto final
+**Primera parte del proyecto final**
+La idea es hacer un eCommerce de zapatillas
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

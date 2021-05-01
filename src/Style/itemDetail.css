@@ -1,0 +1,12 @@
+.detailCard{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.detail-img{
+    width: 450px;
+}
+.descripcion{
+    margin-top: 50px;
+    margin-left: 40px;
+}
