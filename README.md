@@ -1,6 +1,8 @@
 ## Primera entrega del proyecto final
 **Primera parte del proyecto final**
+
 La idea es hacer un eCommerce de zapatillas
+![](demo/Demo.gif)
 
 # Getting Started with Create React App
 
