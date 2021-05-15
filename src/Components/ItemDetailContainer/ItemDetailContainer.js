@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-import Loading from '../Loading/Loading'
+import Loading from '../Loading/Loading';
+import { useCartContext } from '../CartContext/cartContext';
+import ItemCountContainer from '../Contador/ItemCountContainer'
+
 
 const ItemDetailContainer = () => {
     const [datos, setDatos] = useState([]);
+    const [addItems, items] = useCartContext();
     const { id } = useParams();
+
     useEffect(() => {
         const detalles = [
             {
@@ -40,12 +45,16 @@ const ItemDetailContainer = () => {
             setDatos(itemFilterFind)
         })
     }, [id])
-    console.log(datos);
+
+    const onAdd = (count) => {
+        addItems(count, datos)
+    }
 
     return (
         <React.Fragment>
             <div>
                 {datos.length == null ? <ItemDetail datos={datos}/> : <Loading />}
+                {<ItemCountContainer datos={datos} onAdd={onAdd}></ItemCountContainer>}
             </div>
         </React.Fragment>
     )

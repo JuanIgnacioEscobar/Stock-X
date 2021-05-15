@@ -36,3 +36,15 @@
     outline: none;
     text-decoration: none;
 }
+.LinkCard {
+    text-decoration: none;
+    color: black;
+}
+.LinkCard:hover {
+    outline: none;
+    text-decoration: none;
+    color: black;
+}
+.Card:hover {
+    transform: scale(1.03, 1.03);
+}

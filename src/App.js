@@ -2,23 +2,25 @@ import ItemNavbar from './Components/Navbar/ItemNavbar';
 import ItemListContainer from './Components/ItemList/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Switch, Route, useHistory } from 'react-router-dom';
-// import { Button } from 'react-bootstrap';
+import { CartProvider } from './Components/CartContext/cartContext'
 import './App.css';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ItemNavbar />
-      <Switch>
-        <Route path='/Item/:id'>
-          <ItemDetailContainer />
-        </Route>
-        <Route path="/">
-          <OnLoadPage />
-          <ItemListContainer />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <ItemNavbar />
+        <Switch>
+          <Route path='/Item/:id'>
+            <ItemDetailContainer />
+          </Route>
+          <Route path="/">
+            <OnLoadPage />
+            <ItemListContainer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

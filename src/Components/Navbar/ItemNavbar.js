@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import '../../Style/Navbar.css';
 import {Link} from 'react-router-dom';
-import CartWidget from './CartWidget'
-import logo from './logo_zapa.png'
+import CartWidget from './CartWidget';
+import logo from './logo_zapa.png';
+import '../../Style/Navbar.css';
+import { useCartContext } from '../CartContext/cartContext';
 
 const ItemNavbar = () => {
+    const { count } = useCartContext();
 
     return(
     <React.Fragment>
@@ -22,7 +24,7 @@ const ItemNavbar = () => {
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                 </NavDropdown>
                 <Nav className="itemMenu">Nosotros</Nav>
-                <Nav className="itemMenu"><CartWidget /></Nav>
+                <Nav className="itemMenu">{count}<CartWidget /></Nav>
             </Navbar.Collapse>
         </Navbar>
     </React.Fragment>
