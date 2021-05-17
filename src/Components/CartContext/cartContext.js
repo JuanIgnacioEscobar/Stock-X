@@ -21,7 +21,7 @@ export function CartProvider ({children}) {
 
     const getQuantity = (datos, count) => {
         const filtro = [...items];
-        filtro.forEach(i => {
+        filtro.map(i => {
             if(i.id === datos.id) {
                 if(i.qty < 5 && (i.qty + count > 5)) {
                     i.qty = 5
@@ -43,9 +43,9 @@ export function CartProvider ({children}) {
         }
     };
 
-    // function total() {
-    //     const precioTotal = items.reduce((a,b) => (a + (b.precio * b.qty)),0)
-    // }
+    function total() {
+        const precioTotal = items.reduce((a,b) => (a + (b.precio * b.qty)),0)
+    }
 
     function getUnits() {
         const unid = items.reduce((a,b) => (a + b.qty),0)
@@ -63,7 +63,7 @@ export function CartProvider ({children}) {
     }
 
     return (
-        <CartContext.Provider value={{ items, addItems, removeItems, clear, getUnits }}>
+        <CartContext.Provider value={{ items, addItems, removeItems, total, clear, getUnits }}>
             {children}
         </CartContext.Provider>
     )

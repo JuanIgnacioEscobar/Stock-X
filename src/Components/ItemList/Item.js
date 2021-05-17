@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../Style/item.css';
 // import ItemCount from '../Contador/ItemCount';
 
-const Item = ({img, title, precio, stock, id}) => {
+const Item = ({img, title, precio, id}) => {
     
     return (
         <React.Fragment>
