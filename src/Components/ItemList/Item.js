@@ -2,7 +2,6 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../Style/item.css';
-// import ItemCount from '../Contador/ItemCount';
 
 const Item = ({img, title, precio, id}) => {
     

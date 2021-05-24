@@ -6,25 +6,25 @@ export const useCartContext = () => useContext(CartContext);
 
 export function CartProvider ({children}) {
     const [items, setItems] = useState([]);
-
+    const [tost, setTost] = useState(false);
+    const [vacio, setVacio] = useState(false);
+    
     useEffect(() => {
-        console.log(items);
     }, [items]);
 
     const isInCart = (id) => {
-        const inCart = items.find(x => x.id === id)
-        if(inCart !== undefined) {
-            return true
-        }
-        return false
+        const enElCart = items.some(x => x.id === id)
+        
+        return enElCart
     }
 
     const getQuantity = (datos, count) => {
         const filtro = [...items];
-        filtro.map(i => {
+        filtro.forEach(i => {
             if(i.id === datos.id) {
-                if(i.qty < 5 && (i.qty + count > 5)) {
+                if((i.qty += count)> 5) {
                     i.qty = 5
+                    setTost(true)
                 }
             }
         })
@@ -45,25 +45,31 @@ export function CartProvider ({children}) {
 
     function total() {
         const precioTotal = items.reduce((a,b) => (a + (b.precio * b.qty)),0)
+        return precioTotal
     }
 
     function getUnits() {
         const unid = items.reduce((a,b) => (a + b.qty),0)
-        return unid
+        if(unid === 0) {
+            setVacio(false)
+        }
+        return unid;
     }
 
     const removeItems = (item) => {
         console.log(item);
-        const newItems = item.filter(x => x.id !== item);
+        const newItems = items.filter(x => x.id !== item);
         setItems(newItems);
+        console.log('Item eliminado');
     }
 
-    const clear = () => {
+    const clearItems = () => {
         setItems([]);
+        setVacio(false)
     }
 
     return (
-        <CartContext.Provider value={{ items, addItems, removeItems, total, clear, getUnits }}>
+        <CartContext.Provider value={{ items, addItems, removeItems, total, clearItems, getUnits, vacio, tost }}>
             {children}
         </CartContext.Provider>
     )
