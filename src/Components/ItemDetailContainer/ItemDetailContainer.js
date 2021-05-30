@@ -27,7 +27,7 @@ const ItemDetailContainer = () => {
         <React.Fragment>
             <div>
                 {datos.length == null ? <ItemDetail datos={datos}/> : <Loading />}
-                {datos.length == null ? <ItemCountContainer stock={datos.stock} datos={datos}></ItemCountContainer> : <Loading />}
+                {datos.length == null ? <ItemCountContainer stock={datos.stock} datos={datos} />: console.log('Error count')}
             </div>
         </React.Fragment>
     )

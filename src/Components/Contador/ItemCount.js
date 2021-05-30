@@ -2,25 +2,37 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import '../../Style/item.css'
+import { useCartContext } from '../CartContext/cartContext';
 
 const ItemCount = ({ id, stockUser, stockTotal, sumar, restar, botonActivo, activo, onAdd, count}) => {
 
+    const {items} = useCartContext()
     return (
         <React.Fragment>
-            <div className="contadorItemDetail">
-                <p id={id}>Stock: {stockTotal}</p>
-                <div className="contador">
-                    <Button onClick={restar} disabled={!botonActivo}>-</Button>
-                    <p>{stockUser}</p>
-                    <Button onClick={sumar} disabled={!botonActivo}>+</Button>
+            <section className="containerSectionItem">
+                <div className="container-item"></div>
+                <div className="contadorItemDetail">
+                    <h5 id={id}>Cantidad en stock: {stockTotal}</h5>
+                    <div className='contador'>
+                        <Button onClick={restar} disabled={!botonActivo}>-</Button>
+                        <p>{stockUser}</p>
+                        <Button onClick={sumar} disabled={!botonActivo}>+</Button>
+                    </div>
+                    <div className="btn-addItem">
+                        <button onClick={()=> onAdd(count)} disabled={!activo}>Agregar al carrito</button>
+                        {
+                            items.length !== 0 ? <Link to={'/cart'}><button>Ir al carrito</button></Link> : console.log('Carrito vacío')
+                        }
+                    </div>
+                        {
+                            items.length !== 0 ? 
+                            <div>
+                                <h5>Se ha agregado al carrito</h5>
+                            </div>
+                            : console.log('Error al intenar comprar')
+                        }
                 </div>
-            </div>
-            <div>
-                <Button onClick={() => onAdd(count)} disabled={!activo}>Agregar al carrito</Button>
-                {
-                    count !== 0 ? <Link to={'/cart'}><button>Ir al carrito</button></Link> : console.log('Carrito vacio')
-                }
-            </div>
+            </section>
         </React.Fragment>
     )
 }

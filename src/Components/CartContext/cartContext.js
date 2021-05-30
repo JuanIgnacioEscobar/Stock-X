@@ -5,7 +5,10 @@ export const CartContext = React.createContext([]);
 export const useCartContext = () => useContext(CartContext);
 
 export function CartProvider ({children}) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(localStorage.getItem('Items')
+    ? JSON.parse(localStorage.getItem('Items'))
+    : []);
+    
     const [tost, setTost] = useState(false);
     const [vacio, setVacio] = useState(false);
     
